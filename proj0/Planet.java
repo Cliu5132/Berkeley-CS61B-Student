@@ -1,10 +1,10 @@
 public class Planet {
-    double xxPos;
-    double yyPos;
-    double xxVel;
-    double yyVel;
-    double mass;
-    String imgFileName;
+    public double xxPos;
+    public double yyPos;
+    public double xxVel;
+    public double yyVel;
+    public double mass;
+    public String imgFileName;
 
     public Planet(double xP, double yP, double xV, double yV, double m, String img) {
         this.xxPos = xP;
@@ -78,7 +78,7 @@ public class Planet {
         this.yyPos = this.yyPos + dt * this.yyVel;
     }
 
-    public void draw(double r) {
-        StdDraw.picture(this.xxPos/(2*r) + 0.5, this.yyPos/(2*r) + 0.5, "./images/"+this.imgFileName);
+    public void draw() {
+        StdDraw.picture(this.xxPos, this.yyPos, "./images/"+this.imgFileName);
     }
 }

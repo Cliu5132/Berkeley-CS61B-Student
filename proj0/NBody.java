@@ -40,7 +40,8 @@ public class NBody {
 
         /** Enable double buffering */
         StdDraw.enableDoubleBuffering();
-        StdDraw.setCanvasSize(800, 800);
+		StdDraw.setXscale(-r, r);
+		StdDraw.setYscale(-r, r);
 
         /**Create a time variable and set it to 0. Set up a loop to loop until this time variable is T. */
         for(int i=0; i<T; i+=dt){
@@ -59,7 +60,7 @@ public class NBody {
             drawBG();
             /** Draw all of the planets */
             for(Planet p: ps) {
-                p.draw(r);
+                p.draw();
             }
             /** Show all offscreen buffer */
             StdDraw.show();
@@ -70,12 +71,12 @@ public class NBody {
         printFinal(ps, r);
     }
 
-    public static void drawBG() {
+    private static void drawBG() {
         String imageToDraw = "./images/starfield.jpg";
-        StdDraw.picture(0.5,0.5, imageToDraw, 1,1);
+        StdDraw.picture(0,0,imageToDraw);
     }
 
-    public static void printFinal(Planet[] ps, double r) {
+    private static void printFinal(Planet[] ps, double r) {
         /** Print out the final state before end */
         StdOut.printf("%d\n", ps.length);
         StdOut.printf("%.2e\n", r);
