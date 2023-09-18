@@ -92,6 +92,9 @@ public class IntList {
         */
 
         // iterative
+        if(A == null) {
+            return B;
+        }
         if(B == null) {
             return A;
         }
