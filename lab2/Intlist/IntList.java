@@ -92,6 +92,10 @@ public class IntList {
         */
 
         // iterative
+        if(B == null) {
+            return A;
+        }
+
         IntList current = A;
 
         while(current.rest != null) {
