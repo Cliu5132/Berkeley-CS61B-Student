@@ -8,8 +8,26 @@ public class ArrayDequeTest {
         x.addFirst("c");
         x.addLast("d");
         x.addLast("e");
-        x.addFirst("f");
-        x.addLast("g");
+        x.addLast("f");
+        x.addFirst("g");
         x.addLast("h");
+        x.addFirst("i");
+
+        x.removeLast();
+        x.removeLast();
+        x.removeLast();
+        x.removeLast();
+        x.removeLast();
+        x.removeLast();
+
+//        x.removeLast();
+
+        System.out.println(x.size());
+        x.printDeque();
+//
+//        System.out.println(x.get(6));
+//        System.out.println(x.get(0));
+//        System.out.println(x.get(1));
+//        System.out.println(x.get(2));
     }
 }

@@ -1,12 +1,12 @@
-public class ArrayDeque<Item> {
-    private Item[] items;
+public class ArrayDeque<T> {
+    private T[] items;
     private int size;
     private int nextFirst;
     private int nextLast;
 
     /** Creates an empty list. */
     public ArrayDeque() {
-        items = (Item[]) new Object[8];
+        items = (T[]) new Object[8];
         size = 0;
         nextFirst=4;
         nextLast=5;
@@ -14,13 +14,30 @@ public class ArrayDeque<Item> {
 
     /** Resizes the underlying array to the target capacity. */
     public void resize(int capacity) {
-        Item[] a = (Item[]) new Object[capacity];
-        System.arraycopy(items,0,a,0,size);
+
+        T[] a = (T[]) new Object[capacity];
+
+        int copyPointer = nextFirst;
+
+        for(int i=0; i<size; i++) {
+            if(copyPointer==items.length-1){
+                copyPointer = 0;
+            } else {
+                copyPointer++;
+            }
+            a[i] = items[copyPointer];
+        }
+
         items = a;
+        nextFirst = items.length - 1;
+        nextLast = size;
     }
 
     /** public void addFirst(T item) */
-    public void addFirst(Item x) {
+    public void addFirst(T x) {
+        if(size == items.length-1){
+            resize(2 * items.length);
+        }
 
         items[nextFirst] = x;
 
@@ -34,7 +51,11 @@ public class ArrayDeque<Item> {
     }
 
     /** public void addLast(T item) */
-    public void addLast(Item x) {
+    public void addLast(T x) {
+        if(size == items.length-1){
+            resize(2 * items.length);
+        }
+
         items[nextLast] = x;
 
         if (nextLast==items.length-1) {
@@ -47,15 +68,113 @@ public class ArrayDeque<Item> {
     }
 
     /** public boolean isEmpty() */
+    public boolean isEmpty() {
+        if(size == 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /** public int size() */
+    public int size() {
+        return size;
+    }
 
     /** public void printDeque() */
+    public void printDeque() {
+        if(isEmpty()) {
+            System.out.println("Array is Empty.");
+            return;
+        }
+
+        int printPointer = nextFirst;
+
+        while (printPointer != nextLast-1) {
+
+            if (printPointer + 1 > items.length - 1) {
+                printPointer = 0;
+            } else {
+                printPointer = printPointer + 1;
+            }
+
+            System.out.print(items[printPointer] + " ");
+
+        }
+
+        System.out.println();
+    }
 
     /** public T removeFirst() */
+    public T removeFirst() {
+
+        if(isEmpty()){
+            return null;
+        }
+
+        T y = items[nextFirst+1];
+
+        items[nextFirst+1] = null;
+
+        if(nextFirst==items.length-1){
+            nextFirst = 0;
+        } else {
+            nextFirst++;
+        }
+
+        size--;
+
+        if(size < items.length * 0.25){
+            resize(items.length / 2);
+        }
+
+        return y;
+    }
 
     /** public T removeLast() */
+    public T removeLast() {
+
+        if(isEmpty()){
+            return null;
+        }
+
+        if(items.length > 8 && size <= items.length * 0.25){
+            resize(items.length / 2);
+        }
+
+        int removedPointer = nextLast;
+
+        if(removedPointer==0){
+            removedPointer = items.length-1;
+        } else {
+            removedPointer--;
+        }
+
+        T y = items[removedPointer];
+
+        items[removedPointer] = null;
+
+        nextLast = removedPointer;
+        size--;
+        return y;
+    }
 
     /** public T get(int index) */
+    public T get(int index) {
+
+        if(index >= size){
+            return null;
+        }
+
+        int getPointer = nextFirst + index + 1;
+
+        if(getPointer > items.length - 1) {
+            getPointer -= items.length;
+        }
+
+        T y = items[getPointer];
+
+        return y;
+    }
 
 }
