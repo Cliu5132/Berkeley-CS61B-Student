@@ -13,14 +13,12 @@ public class ArrayDequeTest {
         x.addLast("h");
         x.addFirst("i");
 
-        x.removeLast();
-        x.removeLast();
-        x.removeLast();
-        x.removeLast();
-        x.removeLast();
-        x.removeLast();
-
-//        x.removeLast();
+        x.removeFirst();
+        x.removeFirst();
+        x.removeFirst();
+        x.removeFirst();
+        x.removeFirst();
+        x.removeFirst();
 
         System.out.println(x.size());
         x.printDeque();

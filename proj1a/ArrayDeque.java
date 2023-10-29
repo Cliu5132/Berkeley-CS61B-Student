@@ -112,21 +112,24 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        T y = items[nextFirst+1];
-
-        items[nextFirst+1] = null;
-
-        if(nextFirst==items.length-1){
-            nextFirst = 0;
-        } else {
-            nextFirst++;
-        }
-
-        size--;
-
-        if(size < items.length * 0.25){
+        if(items.length > 8 && size <= items.length * 0.25){
             resize(items.length / 2);
         }
+
+        int removedPointer = nextFirst;
+
+        if(removedPointer==items.length-1){
+            removedPointer = 0;
+        } else {
+            removedPointer++;
+        }
+
+        T y = items[removedPointer];
+
+        items[removedPointer] = null;
+
+        nextFirst = removedPointer;
+        size--;
 
         return y;
     }
