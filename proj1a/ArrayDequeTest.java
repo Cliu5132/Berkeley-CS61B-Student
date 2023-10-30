@@ -22,10 +22,6 @@ public class ArrayDequeTest {
 
         System.out.println(x.size());
         x.printDeque();
-//
-//        System.out.println(x.get(6));
-//        System.out.println(x.get(0));
-//        System.out.println(x.get(1));
-//        System.out.println(x.get(2));
+
     }
 }
