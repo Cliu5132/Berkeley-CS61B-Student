@@ -32,7 +32,7 @@ public class IntListTest {
      * lists using the handy IntList.of method.
      * <p>
      * Make sure to include test cases involving lists of various sizes
-     * on both sides of the operation. That includes the empty list, which
+     * on both sides of the operation. That includes the empty of, which
      * can be instantiated, for example, with
      * IntList empty = IntList.of().
      * <p>
@@ -66,8 +66,18 @@ public class IntListTest {
         assertEquals(IntList.of(1, 2, 3), A);
     }
 
-    /** If you're running this from the command line, you'll need
-      * to add a main method. See ArithmeticTest.java for an
-      * example. */
+//    That the function returns a reversed list.
+//    That the function is destructive, i.e. when it is done running, the list pointed to by A has been tampered with. You can use assertNotEquals. This is sort of a silly test.
+//    That the method handles a null input properly.
+    @Test
+    public void testReverse() {
+        IntList A = IntList.of(1, 2, 3);
+        IntList B = IntList.of(3, 2, 1);
+        IntList C = IntList.reverse(A);
+        assertEquals(B, C);
+        IntList D = IntList.of(1, 2, 3);
+        assertNotEquals(A, D);
+        IntList E = IntList.reverse(null);
+    }
 
 }
