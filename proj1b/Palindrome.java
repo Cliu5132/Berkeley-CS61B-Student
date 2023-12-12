@@ -8,7 +8,7 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word) {
-        if(word.length()<=1){
+        if (word.length() <= 1) {
             return true;
         }
 
@@ -17,12 +17,12 @@ public class Palindrome {
         return isPalindromeHelper(d);
     }
 
-    public boolean isPalindromeHelper(Deque item) {
-        if(item.size() <= 1) {
+    private boolean isPalindromeHelper(Deque item) {
+        if (item.size() <= 1) {
             return true;
         }
 
-        if(item.removeFirst() == item.removeLast()) {
+        if (item.removeFirst() == item.removeLast()) {
             return isPalindromeHelper(item);
         }
 
@@ -30,7 +30,7 @@ public class Palindrome {
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
-        if(word.length()<=1){
+        if (word.length() <= 1) {
             return true;
         }
 
@@ -39,12 +39,12 @@ public class Palindrome {
         return isPalindromeHelper(d, cc);
     }
 
-    public boolean isPalindromeHelper(Deque item, CharacterComparator cc) {
-        if(item.size() <= 1) {
+    private boolean isPalindromeHelper(Deque item, CharacterComparator cc) {
+        if (item.size() <= 1) {
             return true;
         }
 
-        if(cc.equalChars((char) item.removeFirst(), (char) item.removeLast())) {
+        if (cc.equalChars((char) item.removeFirst(), (char) item.removeLast())) {
             return isPalindromeHelper(item, cc);
         }
 
