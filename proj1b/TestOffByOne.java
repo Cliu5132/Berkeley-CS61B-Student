@@ -9,6 +9,8 @@ public class TestOffByOne {
     public void testEqualChars() {
         assertTrue(offByOne.equalChars('a', 'b')); // True for lowercase
         assertTrue(offByOne.equalChars('b', 'a')); // True for lowercase
+        assertTrue(offByOne.equalChars('a', 'B')); // True for uppercase
+        assertTrue(offByOne.equalChars('A', 'b')); // True for uppercase
         assertTrue(offByOne.equalChars('A', 'B')); // True for uppercase
         assertTrue(offByOne.equalChars('B', 'A')); // True for uppercase
 
