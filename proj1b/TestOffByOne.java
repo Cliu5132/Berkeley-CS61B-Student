@@ -7,8 +7,18 @@ public class TestOffByOne {
     
     @Test
     public void testEqualChars() {
-        assertTrue(offByOne.equalChars('l', 'k'));
-        assertTrue(offByOne.equalChars('k', 'l'));
-        assertFalse(offByOne.equalChars('a', 'c'));
+        assertTrue(offByOne.equalChars('a', 'b')); // True for lowercase
+        assertTrue(offByOne.equalChars('b', 'a')); // True for lowercase
+        assertTrue(offByOne.equalChars('A', 'B')); // True for uppercase
+        assertTrue(offByOne.equalChars('B', 'A')); // True for uppercase
+
+        assertFalse(offByOne.equalChars('a', 'c')); // False for lowercase
+        assertFalse(offByOne.equalChars('c', 'a')); // False for lowercase
+        assertFalse(offByOne.equalChars('A', 'C')); // False for uppercase
+        assertFalse(offByOne.equalChars('C', 'A')); // False for uppercase
+
+        // Test non-letter characters
+        assertTrue(offByOne.equalChars('%', '&'));
+        assertTrue(offByOne.equalChars('3', '4'));
     }
 }
